@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hrcbetaversion.com.hrcbt">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,17 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
+        <activity android:name=".Activity.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Signup" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MyProfile" />
-        <activity android:name=".ForgotPassward"></activity>
+        <activity android:name=".Activity.Signup" />
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.MyProfile" />
+        <activity android:name=".Activity.ForgotPassward" />
+        <activity android:name=".Activity.Datadisplay"></activity>
     </application>
 
 </manifest>

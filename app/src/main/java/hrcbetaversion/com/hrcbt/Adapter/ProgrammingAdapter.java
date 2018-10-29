@@ -1,49 +1,53 @@
-package hrcbetaversion.com.hrcbt;
+package hrcbetaversion.com.hrcbt.Adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
+
+import hrcbetaversion.com.hrcbt.R;
+import hrcbetaversion.com.hrcbt.Response.HomeDataResponse;
 
 public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.ProgrammingViewHolder> {
 
-    private String[] data;
-    public ProgrammingAdapter(String[] data){
+    List<HomeDataResponse.ResponseBean> data;
+    Context context;
 
-        this.data=data;
+    public ProgrammingAdapter(Context context, List<HomeDataResponse.ResponseBean> response) {
+        this.data = response;
+        this.context = context;
     }
 
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        LayoutInflater inflater =LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.list_item_layout,parent,false);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.list_item_layout, parent, false);
         return new ProgrammingViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ProgrammingViewHolder programmingViewHolder, int position) {
-        String title = data[position];
-        programmingViewHolder.textTitle.setText(title);
-
+        programmingViewHolder.textTitle.setText(data.get(position).getDoctorName());
 
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return data.size();
     }
 
     public class ProgrammingViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgIcon;
         TextView textTitle;
+
         public ProgrammingViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgIcon= itemView.findViewById(R.id.imgIcon);
-            textTitle= itemView.findViewById(R.id.textTitle);
+            textTitle = itemView.findViewById(R.id.textTitle);
 
         }
     }
